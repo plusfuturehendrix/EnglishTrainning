@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     //MARK: - Settings properties
     let wordLabel: UILabel = {
         let word = UILabel()
-        word.font = UIFont.systemFont(ofSize: 36)
         word.textColor = .black
+        word.font = UIFont(name: "MontserratAlternates-Black", size: 50)
         return word
     }()
     
@@ -28,18 +28,19 @@ class ViewController: UIViewController {
 
     let buttonNext: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .gray
+        button.backgroundColor = #colorLiteral(red: 0.1183932796, green: 0.130817771, blue: 0.1623123288, alpha: 1)
         button.layer.cornerRadius = 12
-        button.setTitle("Next", for: .normal)
+        button.setTitle("NEXT", for: .normal)
+        button.titleLabel?.font = UIFont(name: "MontserratAlternates-SemiBold", size: 24)
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
-    var resultLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .systemFont(ofSize: 16, weight: .light)
-        label.textColor = .black
-        return label
+    var resultImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "emoij")
+        return image
     }()
     
     //MARK: - Private properties & Settings properties
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
     private let translations = Russia.translations
     private let optionButtons = [UIButton(), UIButton(), UIButton()]
     private var currentWordIndex = 0
+    private var checkStatusResult = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,25 +59,38 @@ class ViewController: UIViewController {
     //MARK: - Methods
     @objc func optionSelected(_ sender: UIButton) {
         if sender.currentTitle == translations[currentWordIndex] {
-            resultLabel.text = "Correct! Go next!"
+            resultImage.image = UIImage(systemName: "checkmark.circle")
+            resultImage.tintColor = .green
+            checkStatusResult = true
         } else {
-            resultLabel.text = "Incorrect! Correctly translate \(translations[currentWordIndex])"
+            resultImage.tintColor = .red
+            resultImage.image = UIImage(systemName: "xmark.circle")
+            checkStatusResult = false
         }
     }
     
     @objc func nextMethod() {
-        currentWordIndex += 1
-        if currentWordIndex >= words.count {
-            currentWordIndex = 0
+        if checkStatusResult {
+            currentWordIndex += 1
+            if currentWordIndex >= words.count {
+                currentWordIndex = 0
+            }
+            setWord(word: words[currentWordIndex], options: getRandomOptions())
+            resultImage.image = nil
+            checkStatusResult = false
+            resultImage.image = UIImage(named: "emoij")
         }
-        setWord(word: words[currentWordIndex], options: getRandomOptions())
-        resultLabel.text = ""
     }
     
     func setWord(word: String, options: [String]) {
         wordLabel.text = word
         for (index, optionButton) in optionButtons.enumerated() {
             optionButton.setTitle(options[index], for: .normal)
+            optionButton.setTitleColor(#colorLiteral(red: 0.1183932796, green: 0.130817771, blue: 0.1623123288, alpha: 1), for: .normal)
+            optionButton.backgroundColor = .clear
+            optionButton.layer.cornerRadius = 12
+            optionButton.layer.borderWidth = 2
+            optionButton.layer.borderColor = #colorLiteral(red: 0.1183932796, green: 0.130817771, blue: 0.1623123288, alpha: 1)
         }
     }
     
@@ -93,10 +108,17 @@ class ViewController: UIViewController {
 //MARK: - Setting Constraint
 private extension ViewController {
     func initialize() {
+        view.addSubview(resultImage)
+        resultImage.snp.makeConstraints { make in
+            make.width.height.equalTo(75)
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(UIScreen.main.bounds.height / 7)
+        }
+        
         view.addSubview(wordLabel)
         wordLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
+            make.top.equalTo(resultImage.snp.top).offset(UIScreen.main.bounds.height / 7)
         }
 
         view.addSubview(optionsStackView)
@@ -106,22 +128,22 @@ private extension ViewController {
         }
         
         for optionButton in optionButtons {
-            optionButton.backgroundColor = .systemGray
             optionButton.addTarget(self, action: #selector(optionSelected(_:)), for: .touchUpInside)
             optionsStackView.addArrangedSubview(optionButton)
-        }
-        
-        view.addSubview(resultLabel)
-        resultLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(optionsStackView).inset(-50)
+            optionButton.snp.makeConstraints { make in
+                make.width.equalTo(UIScreen.main.bounds.width - 100)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+            }
         }
         
         view.addSubview(buttonNext)
         buttonNext.addTarget(self, action: #selector(nextMethod), for: .touchUpInside)
         buttonNext.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(resultLabel).inset(-50)
+            make.width.equalTo(UIScreen.main.bounds.width - 100)
+            make.height.equalTo(50)
+            make.bottom.equalTo(optionsStackView).inset(-100)
         }
         
         // set up initial word and options

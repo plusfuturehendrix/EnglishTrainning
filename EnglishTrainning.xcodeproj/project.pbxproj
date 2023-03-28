@@ -15,6 +15,8 @@
 		51BFC45A29D1C2F50078C760 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51BFC45929D1C2F50078C760 /* SnapKit */; };
 		51BFC45C29D1CE8E0078C760 /* ModelRussia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFC45B29D1CE8E0078C760 /* ModelRussia.swift */; };
 		51BFC46229D1D5E90078C760 /* ModelEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFC46129D1D5E90078C760 /* ModelEnglish.swift */; };
+		51BFC49429D368AC0078C760 /* MontserratAlternates-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51BFC48F29D368A60078C760 /* MontserratAlternates-Black.ttf */; };
+		51E6EF0829D376AF00730548 /* MontserratAlternates-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51E6EF0729D376AB00730548 /* MontserratAlternates-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		51BFC45229D1C2BB0078C760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51BFC45B29D1CE8E0078C760 /* ModelRussia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRussia.swift; sourceTree = "<group>"; };
 		51BFC46129D1D5E90078C760 /* ModelEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEnglish.swift; sourceTree = "<group>"; };
+		51BFC48A29D368A50078C760 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		51BFC48F29D368A60078C760 /* MontserratAlternates-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Black.ttf"; sourceTree = "<group>"; };
+		51E6EF0729D376AB00730548 /* MontserratAlternates-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 		51BFC44329D1C2BA0078C760 /* EnglishTrainning */ = {
 			isa = PBXGroup;
 			children = (
+				51BFC48329D366540078C760 /* CustomFonts */,
 				51BFC45D29D1D5420078C760 /* Application */,
 				51BFC45E29D1D5490078C760 /* Models */,
 				51BFC45F29D1D5520078C760 /* Views */,
@@ -102,6 +108,16 @@
 				51BFC45229D1C2BB0078C760 /* Info.plist */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		51BFC48329D366540078C760 /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				51BFC48F29D368A60078C760 /* MontserratAlternates-Black.ttf */,
+				51E6EF0729D376AB00730548 /* MontserratAlternates-SemiBold.ttf */,
+				51BFC48A29D368A50078C760 /* OFL.txt */,
+			);
+			path = CustomFonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				51BFC45129D1C2BB0078C760 /* LaunchScreen.storyboard in Resources */,
+				51E6EF0829D376AF00730548 /* MontserratAlternates-SemiBold.ttf in Resources */,
 				51BFC44E29D1C2BB0078C760 /* Assets.xcassets in Resources */,
+				51BFC49429D368AC0078C760 /* MontserratAlternates-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
