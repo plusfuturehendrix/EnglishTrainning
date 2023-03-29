@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "anchorkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Weebly/AnchorKit",
+      "state" : {
+        "branch" : "master",
+        "revision" : "762a962213f7fb8cd55e4281a3a2536576a6f4d6"
+      }
+    },
+    {
       "identity" : "snapkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit",

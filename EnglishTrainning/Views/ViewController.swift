@@ -7,9 +7,9 @@
 
 import UIKit
 import SnapKit
+import AnchorKit
 
 class ViewController: UIViewController {
-    
     //MARK: - Settings properties
     let wordLabel: UILabel = {
         let word = UILabel()
@@ -43,12 +43,16 @@ class ViewController: UIViewController {
         return image
     }()
     
+    let pulse = PulsingView()
+    
     //MARK: - Private properties & Settings properties
     private let words = English.words
     private let translations = Russia.translations
     private let optionButtons = [UIButton(), UIButton(), UIButton()]
-    private var currentWordIndex = 0
-    private var checkStatusResult = false
+    private var currentWordIndex = Int.random(in: 0...412)
+    var checkStatusResult = false
+    
+    static let shared = ViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +62,7 @@ class ViewController: UIViewController {
     
     //MARK: - Methods
     @objc func optionSelected(_ sender: UIButton) {
-        if sender.currentTitle == translations[currentWordIndex] {
+        if sender.currentTitle == translations[currentWordIndex].capitalized {
             resultImage.image = UIImage(systemName: "checkmark.circle")
             resultImage.tintColor = .green
             checkStatusResult = true
@@ -71,9 +75,9 @@ class ViewController: UIViewController {
     
     @objc func nextMethod() {
         if checkStatusResult {
-            currentWordIndex += 1
+            currentWordIndex += Int.random(in: 1...words.count - 1)
             if currentWordIndex >= words.count {
-                currentWordIndex = 0
+                currentWordIndex = Int.random(in: 0...words.count - 1)
             }
             setWord(word: words[currentWordIndex], options: getRandomOptions())
             resultImage.image = nil
@@ -85,7 +89,7 @@ class ViewController: UIViewController {
     func setWord(word: String, options: [String]) {
         wordLabel.text = word
         for (index, optionButton) in optionButtons.enumerated() {
-            optionButton.setTitle(options[index], for: .normal)
+            optionButton.setTitle(options[index].capitalized, for: .normal)
             optionButton.setTitleColor(#colorLiteral(red: 0.1183932796, green: 0.130817771, blue: 0.1623123288, alpha: 1), for: .normal)
             optionButton.backgroundColor = .clear
             optionButton.layer.cornerRadius = 12
@@ -108,11 +112,16 @@ class ViewController: UIViewController {
 //MARK: - Setting Constraint
 private extension ViewController {
     func initialize() {
+        view.addSubview(pulse)
+        pulse.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(UIScreen.main.bounds.height / 6)
+        }
+        
         view.addSubview(resultImage)
         resultImage.snp.makeConstraints { make in
             make.width.height.equalTo(75)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(UIScreen.main.bounds.height / 7)
+            make.centerX.centerY.equalTo(pulse)
         }
         
         view.addSubview(wordLabel)

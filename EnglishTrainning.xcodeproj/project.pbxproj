@@ -17,6 +17,8 @@
 		51BFC46229D1D5E90078C760 /* ModelEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFC46129D1D5E90078C760 /* ModelEnglish.swift */; };
 		51BFC49429D368AC0078C760 /* MontserratAlternates-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51BFC48F29D368A60078C760 /* MontserratAlternates-Black.ttf */; };
 		51E6EF0829D376AF00730548 /* MontserratAlternates-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51E6EF0729D376AB00730548 /* MontserratAlternates-SemiBold.ttf */; };
+		51E6EF0B29D4963700730548 /* AnchorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51E6EF0A29D4963700730548 /* AnchorKit */; };
+		51E6EF0D29D497D500730548 /* PulsingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E6EF0C29D497D500730548 /* PulsingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,7 @@
 		51BFC48A29D368A50078C760 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		51BFC48F29D368A60078C760 /* MontserratAlternates-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Black.ttf"; sourceTree = "<group>"; };
 		51E6EF0729D376AB00730548 /* MontserratAlternates-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.ttf"; sourceTree = "<group>"; };
+		51E6EF0C29D497D500730548 /* PulsingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E6EF0B29D4963700730548 /* AnchorKit in Frameworks */,
 				51BFC45A29D1C2F50078C760 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				51BFC44829D1C2BA0078C760 /* ViewController.swift */,
+				51E6EF0C29D497D500730548 /* PulsingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			name = EnglishTrainning;
 			packageProductDependencies = (
 				51BFC45929D1C2F50078C760 /* SnapKit */,
+				51E6EF0A29D4963700730548 /* AnchorKit */,
 			);
 			productName = EnglishTrainning;
 			productReference = 51BFC44129D1C2BA0078C760 /* EnglishTrainning.app */;
@@ -169,6 +175,7 @@
 			mainGroup = 51BFC43829D1C2BA0078C760;
 			packageReferences = (
 				51BFC45829D1C2F50078C760 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				51E6EF0929D4963700730548 /* XCRemoteSwiftPackageReference "AnchorKit" */,
 			);
 			productRefGroup = 51BFC44229D1C2BA0078C760 /* Products */;
 			projectDirPath = "";
@@ -201,6 +208,7 @@
 				51BFC44929D1C2BA0078C760 /* ViewController.swift in Sources */,
 				51BFC44529D1C2BA0078C760 /* AppDelegate.swift in Sources */,
 				51BFC46229D1D5E90078C760 /* ModelEnglish.swift in Sources */,
+				51E6EF0D29D497D500730548 /* PulsingView.swift in Sources */,
 				51BFC44729D1C2BA0078C760 /* SceneDelegate.swift in Sources */,
 				51BFC45C29D1CE8E0078C760 /* ModelRussia.swift in Sources */,
 			);
@@ -420,6 +428,14 @@
 				kind = branch;
 			};
 		};
+		51E6EF0929D4963700730548 /* XCRemoteSwiftPackageReference "AnchorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Weebly/AnchorKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -427,6 +443,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 51BFC45829D1C2F50078C760 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		51E6EF0A29D4963700730548 /* AnchorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51E6EF0929D4963700730548 /* XCRemoteSwiftPackageReference "AnchorKit" */;
+			productName = AnchorKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
